@@ -1,0 +1,5 @@
+alias dbx="distrobox"
+alias :q="exit"
+alias vim="nvim"
+alias vi="vim"
+alias vconf="nvim ~/.config/nvim/init.vim"
