@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal dotfiles versioned with `[chezmoi](https://www.chezmoi.io/)`
+Personal dotfiles versioned with [chezmoi](https://www.chezmoi.io/)
 
 To get my dotfiles on your machines
 
