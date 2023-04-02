@@ -1,3 +1,36 @@
 function reload-shell {
 	source ~/.zshrc
 }
+
+function note {
+	local filename="${1}"
+	local data_path="~/.local/share/note"
+	local last_edit_ptr_file=".last_edit"
+	local path_to_file="${data_path}/${filename}"
+	local last_line="1"
+	mkdir -p "${data_path}"
+
+	if [[ -f "${data_path}/${last_edit_ptr_file}" ]]; then
+		local last_entry=$(tail -n 1 "${data_path}/${last_edit_ptr_file}")
+		local last_entry_nl=$(echo "${last_entry}" | tr "," "\n")
+		echo -e "${last_entry_nl}"
+		echo "press any key to continue"
+		read  -n 1 mainmenuinput
+		local last_file=$(echo "${last_entry_nl}" | grep "file:" | cut -d ':' -f 2)
+		if [[ "${filename}" -eq "${last_file}" ]]; then
+			last_line=$(echo "${last_entry_nl}" | grep "last-line:" | cut -d ':' -f 2)
+		fi
+	fi
+
+	cd "${data_path}"
+	hx "${filename}:${last_line}"
+	last_line=$(wc -l "${filename}" | cut -d ' ' -f 1)
+	local file_metadata=$(cat "${filename}")
+	local author=$(echo "${file_metadata}" | cut -d ' ' -f 3)
+	local iso_date=$(echo "${file_metadata}" | cut -d ' ' -f 6)
+	local iso_time=$(echo "${file_metadata}" | cut -d ' ' -f 7)
+	local iso_datetime="${iso_date}:${iso_time}"
+	local entry="file:${filename},author:${author},datetime:${iso_datetime},last-line:${last_line}"
+	echo -e "${entry}" >> "${last_edit_ptr_file}"
+	cd -
+}
