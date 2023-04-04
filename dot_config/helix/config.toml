@@ -4,14 +4,23 @@ theme = "tokyonight"
 mouse = true
 line-number = "absolute"
 cursorline = true
+cursorcolumn = false
 auto-completion = true
 auto-format = true
 auto-info = true
-
+idle-timeout = 0
+true-color = true
+bufferline = "always"
+undercurl = true
 color-modes = true
 auto-pairs = true
-gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 middle-click-paste = true
+
+[editor.gutters]
+layout = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+
+[editor.gutters.line-numbers]
+min-width = 1
 
 [editor.statusline]
 left = ["mode", "spinner"]
@@ -29,6 +38,11 @@ auto-signature-help = true
 display-inlay-hints = true
 display-signature-help-docs = true
 snippets = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
 
 [editor.whitespace]
 render = "all"
