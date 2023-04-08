@@ -10,7 +10,7 @@ function is_immutable_os {
 
 	# test if we are using an immutable os
 	for name_exp in "${!name_exp_ht[@]}"; do
-		if echo "$etc_release" | grep "${name_exp}"; then
+		if echo $etc_release | grep -q "${name_exp}";  then
 			echo -e "Immutable OS detected ${name_exp_ht[$name_exp]}"
 			return 0
 		fi
