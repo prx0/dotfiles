@@ -44,3 +44,8 @@ function set-font-size {
 	fi
 	sed -i "s/ size: .*$/ size: ${size}/" ~/.config/alacritty/font.yml
 }
+
+function hi {
+	local server_name="${1:-dev}"
+	tmux new -As "${server_name}"
+}
