@@ -54,7 +54,7 @@ function set-theme {
 	sed -i "/^theme /s/=.*$/= '${theme}'/" "${helix_config_file}"
 }
 
-function hi {
+function devbox {
 	local server_name="${1:-dev}"
 	tmux new -As "${server_name}"
 }

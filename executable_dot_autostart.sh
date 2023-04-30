@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ~/.functions
+
 function is_immutable_os {
 	declare -A name_exp_ht=(
 		["ilverblue"]="Fedora Silverblue"
@@ -19,6 +21,12 @@ function is_immutable_os {
 	return 1
 }
 
+function attach_devbox {
+	if [[ -z "${TMUX}" ]]; then
+		devbox
+	fi
+}
+
 function jump_into_container {
 	if [[ -z "${container}" ]]; then
 		local container_name="${1:-f37}"
@@ -26,9 +34,12 @@ function jump_into_container {
 		distrobox enter "${container_name}"
 	else
 		echo -e "I'm in!"
+		attach_devbox
 	fi
 }
 
 if is_immutable_os; then
 	jump_into_container
+else
+	attach_devbox
 fi
