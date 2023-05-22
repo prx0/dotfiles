@@ -54,7 +54,31 @@ function set-theme {
 	sed -i "/^theme /s/=.*$/= '${theme}'/" "${helix_config_file}"
 }
 
+function _devbox_tmux_adapter {
+	local session_name="${1}"
+	tmux new -As "${session_name}"
+}
+
+function _devbox_zellij_adapter {
+	local session_name="${1}"
+	zellij -s "${session_name}"
+	if [[ "$?" -ne 0 ]]; then
+		zellij a "${session_name}"
+	fi
+}
+
+# Create or join an existing multiplexer's session
 function devbox {
-	local server_name="${1:-dev}"
-	tmux new -As "${server_name}"
+	local session_name="${1:-dev}"
+	case "${DEVBOX_MULTIPLEXER}" in
+		"tmux")
+			_devbox_tmux_adapter "${session_name}"
+		;;
+		"zellij")
+			_devbox_zellij_adapter "${session_name}"
+		;;
+		*)
+			_devbox_zellij_adapter "${session_name}"
+		;;
+	esac
 }
