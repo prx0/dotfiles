@@ -47,11 +47,16 @@ function set-font-size {
 
 function set-theme {
 	local theme="${1}"
+
 	local alacritty_config_dir="${HOME}/.config/alacritty"
 	ln -fs "${alacritty_config_dir}/themes/themes/${theme}.yaml" "${alacritty_config_dir}/theme.yml"
 
 	local helix_config_file="${HOME}/.config/helix/config.toml"
-	sed -i "/^theme /s/=.*$/= '${theme}'/" "${helix_config_file}"
+	local helix_theme=$(sed 's/-/_/g' <<< "${theme}")
+	sed -i "/^theme /s/=.*$/= '${helix_theme}'/" "${helix_config_file}"
+
+	local zellij_config_file="${HOME}/.config/zellij/config.kdl"
+	sed -i "/^theme /s/ .*$/ \"${theme}\"/" "${zellij_config_file}"
 }
 
 function _devbox_tmux_adapter {

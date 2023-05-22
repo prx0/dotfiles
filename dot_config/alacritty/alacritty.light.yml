@@ -1,0 +1,80 @@
+# Colors (One Dark)
+#colors:
+#  primary:
+#    background: '#282c34'
+#    foreground: '#abb2bf'
+#  cursor:
+#    text:       CellBackground
+#    cursor:     '#528bff' # syntax-cursor-color
+#  selection:
+#    text:       CellForeground
+#    background: '#3e4451' # syntax-selection-color
+#  normal:
+#    black:      '#5c6370' # mono-3
+#    red:        '#e06c75' # red 1
+#    green:      '#98c379'
+#    yellow:     '#e5c07b' # orange 2
+#    blue:       '#61afef'
+#    magenta:    '#c678dd'
+#    cyan:       '#56b6c2'
+#    white:      '#828997' # mono-2
+
+env:
+  TERM: xterm-256color
+
+    # Font configuration (changes require restart)
+font:
+  # The size to use.
+  #size: 17
+  size: 9
+  # The normal (roman) font face to use.
+  normal:
+    family: Fira Code 
+    # Style can be specified to pick a specific face.
+    #style: Light
+
+  # The bold font face
+  bold:
+    family: Fira Code
+    # Style can be specified to pick a specific face.
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: Droid Sans Mono Slashed for Powerline
+    # Style can be specified to pick a specific face.
+    # style: Italic
+
+# onedarkpro.nvim - onelight
+colors:
+  primary:
+    background: "#fafafa"
+    foreground: "#6a6a6a"
+
+  normal:
+    black: "#6a6a6a"
+    red: "#e05661"
+    green: "#1da912"
+    yellow: "#eea825"
+    blue: "#118dc3"
+    magenta: "#9a77cf"
+    cyan: "#56B6C2"
+    white: "#fafafa"
+  
+  bright:
+    black: "#5f5f5f"
+    red: "#e05661"
+    green: "#1da912"
+    yellow: "#eea825"
+    blue: "#118dc3"
+    magenta: "#9a77cf"
+    cyan: "#56B6C2"
+    white: "#fcfcfc"
+
+  cursor:
+    text: CellBackground
+    cursor: CellForeground # syntax-cursor-color
+
+  selection:
+    text: CellForeground
+    background: "#bfceff" # syntax-selection-color
